@@ -141,6 +141,7 @@ main {
   }
   .check {
     left: 43%;
+    height: 7vh;
     padding: 0.3rem;
     position: relative;
   }
