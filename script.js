@@ -74,7 +74,10 @@ const monthCheck = function () {
       input.classList.add("error-input");
     });
     isValid = false;
-  } else if (monthNumber === (4 ||) && Number(dayInput.value) > 28) {
+  } else if (
+    monthNumber === (4 || 6 || 9 || 11) &&
+    Number(dayInput.value) > 30
+  ) {
     daySpan.classList.add("error-span");
     daySpan.textContent = "Must be a valid date";
     day.classList.add("error-text");
@@ -83,6 +86,8 @@ const monthCheck = function () {
     });
     isValid = false;
   } else {
+    day.classList.remove("error-text");
+    daySpan.textContent = " ";
     monthSpan.textContent = " ";
     month.classList.remove("error-text");
     allInput.forEach((input) => {
@@ -111,8 +116,8 @@ const yearCheck = function () {
     });
     isValid = false;
   } else {
-    yearSpan.textContent = " ";
     year.classList.remove("error-text");
+    yearSpan.textContent = " ";
     allInput.forEach((input) => {
       input.classList.remove("error-input");
     });
