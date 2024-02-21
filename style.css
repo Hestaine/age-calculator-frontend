@@ -90,6 +90,18 @@ main {
 .error-span {
   color: var(--Light-red);
 }
+.error-text:focus {
+  color: var(--Light-red);
+}
+.error-input:focus {
+  outline: 1px solid var(--Light-red);
+}
+.correct-input:focus {
+  outline: 1px solid var(--light-green);
+}
+.error-span:focus {
+  color: var(--Light-red);
+}
 
 /* Line anc check btn */
 .line-check {
@@ -144,10 +156,13 @@ main {
     left: 43%;
     width: 12.5vw;
     height: 7.5vh;
-    padding: 0.3rem;
+    padding: 0.6rem;
     position: relative;
   }
   .output {
     font-size: 3rem;
+  }
+  .msg-span {
+    font-size: 0.5rem;
   }
 }
