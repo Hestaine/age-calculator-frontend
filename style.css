@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+:root {
+  --Purple: hsl(259, 100%, 65%);
+  --Light-red: hsl(0, 100%, 67%);
+  --White: hsl(0, 0%, 100%);
+  --Off-white: hsl(0, 0%, 94%);
+  --Light-grey: hsl(0, 0%, 86%);
+  --Smokey-grey: hsl(0, 1%, 44%);
+  --Off-black: hsl(0, 0%, 8%);
+  --light-green: hsl(120, 100%, 67%);
+}
+
+/* Universal style */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  /* Centering the content */
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+
+  /* Background */
+  background-color: var(--Off-white);
+}
+
+/* Main style */
+main {
+  gap: 0.3rem;
+  width: 38vw;
+  display: flex;
+  padding: 2.5rem;
+  border-radius: 15px;
+  flex-direction: column;
+  border-bottom-right-radius: 70px;
+  background-color: var(--White);
+}
+
+/* Input area */
+.input-div {
+  display: flex;
+  gap: 1.3rem;
+}
+.birth-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+.birth-text {
+  font-weight: 700;
+  font-size: 0.6rem;
+  word-spacing: 5px;
+  color: var(--Smokey-grey);
+}
+.input {
+  width: 6.3rem;
+  height: 3rem;
+  padding: 0.7rem;
+  font-weight: 700;
+  font-size: 1.3rem;
+  border-radius: 6px;
+  color: var(--Off-black);
+  border: 1px solid var(--Light-grey);
+}
+.input::placeholder {
+  color: var(--Smokey-grey);
+}
+.input:focus {
+  outline: 1px solid var(--Purple);
+}
+.msg-span {
+  font-weight: 400;
+  font-size: 0.7rem;
+  font-size: italic;
+}
+.error-text {
+  color: var(--Light-red);
+}
+.error-input {
+  outline: 1px solid var(--Light-red);
+}
+.correct-input {
+  outline: 1px solid var(--light-green);
+}
+.error-span {
+  color: var(--Light-red);
+}
+
+/* Line anc check btn */
+.line-check {
+  display: flex;
+  align-items: center;
+}
+.line {
+  width: 90vw;
+  height: 1px;
+  background-color: var(--Light-grey);
+}
+.check {
+  height: 8vh;
+  width: 8vw;
+  padding: 0.7rem;
+  border-radius: 50%;
+  background-color: var(--Purple);
+}
+
+/* Output section */
+.output {
+  color: var(--Off-black);
+  font-size: 5rem;
+  font-weight: 800;
+  font-size: italic;
+}

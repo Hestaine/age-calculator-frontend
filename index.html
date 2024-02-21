@@ -17,30 +17,45 @@
   <body>
     <main>
       <div class="input-div">
-        <div class="day-input">
-          <h4 class="day">DAY</h4>
-          <input type="text" maxlength="2" />
-          <span class="day-span"></span>
+        <div class="birth-input">
+          <p class="birth-text">DAY</p>
+          <input
+            type="text"
+            maxlength="2"
+            class="input-day input"
+            placeholder="DD"
+          />
+          <span class="day-span msg-span"></span>
         </div>
-        <div class="month-input">
-          <h4 class="month">MONTH</h4>
-          <input type="text" maxlength="98" />
-          <span class="day-span"></span>
+        <div class="birth-input">
+          <p class="birth-text">MONTH</p>
+          <input
+            type="text"
+            maxlength="2"
+            class="input-month input"
+            placeholder="MM"
+          />
+          <span class="month-span msg-span"></span>
         </div>
-        <div class="year-input">
-          <h4 class="year">YEAR</h4>
-          <input type="text" maxlength="4" />
-          <span class="year-span"></span>
+        <div class="birth-input">
+          <p class="birth-text">YEAR</p>
+          <input
+            type="text"
+            maxlength="4"
+            class="input-year input"
+            placeholder="YYYY"
+          />
+          <span class="year-span msg-span"></span>
         </div>
       </div>
       <div class="line-check">
         <div class="line"></div>
-        <img src="./assets/images/icon-arrow.svg" alt="check" />
+        <img src="./assets/images/icon-arrow.svg" alt="check" class="check" />
       </div>
       <div class="output-div">
-        <h2 class="year-output"><span class="year-value">--</span> Years</h2>
-        <h2 class="month-output"><span class="year-value">--</span> months</h2>
-        <h2 class="day-output"><span class="year-value">--</span> days</h2>
+        <h2 class="output"><span class="year-value">--</span> Years</h2>
+        <h2 class="output"><span class="month-value">--</span> months</h2>
+        <h2 class="output"><span class="day-value">--</span> days</h2>
       </div>
     </main>
     <script src="script.js"></script>
