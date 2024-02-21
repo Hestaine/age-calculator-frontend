@@ -130,5 +130,20 @@ main {
 @media screen and (max-width: 950px) {
   main {
     width: 90vw;
+    padding: 1.4rem;
+  }
+  .input {
+    width: 5rem;
+  }
+  .line {
+    width: 78vw;
+    position: absolute;
+  }
+  .check {
+    left: 50%;
+    width: 5vw;
+    height: 5vh;
+    padding: 0.4rem;
+    position: relative;
   }
 }
