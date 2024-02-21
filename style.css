@@ -101,9 +101,13 @@ main {
   height: 1px;
   background-color: var(--Light-grey);
 }
+.check:hover {
+  background-color: var(--Off-black);
+}
 .check {
   height: 8vh;
   width: 8vw;
+  cursor: pointer;
   padding: 0.7rem;
   border-radius: 50%;
   background-color: var(--Purple);
@@ -111,8 +115,20 @@ main {
 
 /* Output section */
 .output {
-  color: var(--Off-black);
-  font-size: 5rem;
   font-weight: 800;
-  font-size: italic;
+  line-height: 4.5rem;
+  font-size: 3.4rem;
+  font-style: italic;
+  color: var(--Off-black);
+}
+.year-value,
+.month-value,
+.day-value {
+  color: var(--Purple);
+}
+
+@media screen and (max-width: 950px) {
+  main {
+    width: 90vw;
+  }
 }
