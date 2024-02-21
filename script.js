@@ -20,6 +20,7 @@ const presentYear = new Date().getFullYear();
 let isValid = true;
 
 // Functions
+// Check valid day
 const dayCheck = function () {
   const dayNumber = Number(dayInput.value);
   if (dayNumber > 31) {
@@ -41,6 +42,8 @@ const dayCheck = function () {
   } else {
     daySpan.textContent = " ";
     day.classList.remove("error-text");
+    monthSpan.textContent = " ";
+    month.classList.remove("error-text");
     allInput.forEach((input) => {
       input.classList.remove("error-input");
     });
@@ -48,6 +51,7 @@ const dayCheck = function () {
   }
 };
 
+// Check month valid
 const monthCheck = function () {
   const monthNumber = Number(monthInput.value);
   if (monthNumber > 12) {
@@ -75,8 +79,10 @@ const monthCheck = function () {
     });
     isValid = false;
   } else if (
-    monthNumber === (4 || 6 || 9 || 11) &&
-    Number(dayInput.value) > 30
+    monthNumber === 4 ||
+    monthNumber === 6 ||
+    monthNumber === 9 ||
+    (monthNumber === 11 && Number(dayInput.value) > 30)
   ) {
     daySpan.classList.add("error-span");
     daySpan.textContent = "Must be a valid date";
@@ -97,6 +103,7 @@ const monthCheck = function () {
   }
 };
 
+// check year valid
 const yearCheck = function () {
   const yearNumber = Number(yearInput.value);
   if (yearNumber > presentYear) {
@@ -125,7 +132,23 @@ const yearCheck = function () {
   }
 };
 
+// check age
+const calcAge = function () {
+  if (isValid) {
+    dayOutput.textContent = presentDay - dayInput.value;
+    monthOutput.textContent = presentMonth - monthInput.value;
+    yearOutput.textContent = presentYear - yearInput.value;
+  } else {
+    dayOutput.textContent = "- -";
+    monthOutput.textContent = "- -";
+    yearOutput.textContent = "- -";
+  }
+  console.log(yearInput.value);
+  console.log(monthInput.value);
+  console.log(dayInput.value);
+};
 // Event listeners
 dayInput.addEventListener("input", dayCheck);
 monthInput.addEventListener("input", monthCheck);
 yearInput.addEventListener("input", yearCheck);
+check.addEventListener("click", calcAge);
