@@ -14,10 +14,8 @@ const allInput = document.querySelectorAll(".input");
 const dayOutput = document.querySelector(".day-value");
 const monthOutput = document.querySelector(".month-value");
 const yearOutput = document.querySelector(".year-value");
-const presentDay = new Date().getDate();
-const presentMonth = new Date().getMonth() + 1;
 const presentYear = new Date().getFullYear();
-let isValid = true;
+let isValid = false;
 
 // Functions
 // Check valid day
@@ -135,17 +133,28 @@ const yearCheck = function () {
 // check age
 const calcAge = function () {
   if (isValid) {
-    dayOutput.textContent = presentDay - dayInput.value;
-    monthOutput.textContent = presentMonth - monthInput.value;
-    yearOutput.textContent = presentYear - yearInput.value;
+    const birthDate = `${monthInput.value}/${dayInput.value}/${yearInput.value}`;
+    console.log(birthDate);
+    const newBirthDate = new Date(birthDate);
+    console.log(newBirthDate);
+    const ageDiff = Date.now() - newBirthDate;
+    console.log(ageDiff);
+    const ageDate = new Date(ageDiff);
+    console.log(ageDate);
+    const ageDay = ageDate.getDay() - 1;
+    console.log(ageDay);
+    const ageMonth = ageDate.getMonth();
+    console.log(ageMonth);
+    const ageYear = ageDate.getFullYear() - 1970;
+    console.log(ageYear);
+    dayOutput.textContent = ageDay;
+    monthOutput.textContent = ageMonth;
+    yearOutput.textContent = ageYear;
   } else {
     dayOutput.textContent = "- -";
     monthOutput.textContent = "- -";
     yearOutput.textContent = "- -";
   }
-  console.log(yearInput.value);
-  console.log(monthInput.value);
-  console.log(dayInput.value);
 };
 // Event listeners
 dayInput.addEventListener("input", dayCheck);
