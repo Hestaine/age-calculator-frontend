@@ -22,6 +22,8 @@ let isValid = false;
 // Functions
 // Check valid day
 const dayCheck = function () {
+  const monthNumber = Number(monthInput.value);
+  const yearNumber = Number(yearInput.value);
   const dayNumber = Number(dayInput.value);
   if (dayNumber > 31) {
     daySpan.classList.add("error-span");
@@ -39,7 +41,7 @@ const dayCheck = function () {
       input.classList.add("error-input");
     });
     isValid = false;
-  } else if (Number(monthInput.value) === 2 && dayNumber > 28) {
+  } else if (monthNumber === 2 && dayNumber > 28) {
     daySpan.classList.add("error-span");
     daySpan.textContent = "Must be a valid date";
     day.classList.add("error-text");
@@ -48,10 +50,10 @@ const dayCheck = function () {
     });
     isValid = false;
   } else if (
-    (Number(monthInput.value) === 4 ||
-      Number(monthInput.value) === 6 ||
-      Number(monthInput.value) === 9 ||
-      Number(monthInput.value) === 11) &&
+    (monthNumber === 4 ||
+      monthNumber === 6 ||
+      monthNumber === 9 ||
+      monthNumber === 11) &&
     dayNumber > 30
   ) {
     daySpan.classList.add("error-span");
@@ -61,20 +63,45 @@ const dayCheck = function () {
       input.classList.add("error-input");
     });
     isValid = false;
+  } else if (
+    (yearNumber === presentYear && monthNumber > presentMonth) ||
+    (yearNumber === presentYear &&
+      monthNumber > presentMonth &&
+      dayNumber > presentDay) ||
+    (yearNumber === presentYear &&
+      monthNumber === presentMonth &&
+      dayNumber > presentDay)
+  ) {
+    daySpan.textContent = "Invalid Date";
+    monthSpan.textContent = "Invalid Date";
+    yearSpan.textContent = "Invalid Date";
+    day.classList.add("error-text");
+    month.classList.add("error-text");
+    year.classList.add("error-text");
+    daySpan.classList.add("error-text");
+    monthSpan.classList.add("error-text");
+    yearSpan.classList.add("error-text");
+    allInput.forEach((input) => {
+      input.classList.add("error-input");
+    });
+    isValid = false;
   } else {
     daySpan.textContent = " ";
-    day.classList.remove("error-text");
     monthSpan.textContent = " ";
+    yearSpan.textContent = " ";
+    day.classList.remove("error-text");
     month.classList.remove("error-text");
+    year.classList.remove("error-text");
     allInput.forEach((input) => {
       input.classList.remove("error-input");
     });
     isValid = true;
   }
 };
-
 // Check month valid
 const monthCheck = function () {
+  const yearNumber = Number(yearInput.value);
+  const dayNumber = Number(dayInput.value);
   const monthNumber = Number(monthInput.value);
   if (monthNumber > 12) {
     monthSpan.classList.add("error-span");
@@ -92,7 +119,7 @@ const monthCheck = function () {
       input.classList.add("error-input");
     });
     isValid = false;
-  } else if (monthNumber === 2 && Number(dayInput.value) > 28) {
+  } else if (monthNumber === 2 && dayNumber > 28) {
     monthSpan.textContent = " ";
     daySpan.classList.add("error-span");
     daySpan.textContent = "Must be a valid date";
@@ -106,7 +133,7 @@ const monthCheck = function () {
       monthNumber === 6 ||
       monthNumber === 9 ||
       monthNumber === 11) &&
-    Number(dayInput.value) > 30
+    dayNumber > 30
   ) {
     monthSpan.textContent = " ";
     daySpan.classList.add("error-span");
@@ -116,11 +143,35 @@ const monthCheck = function () {
       input.classList.add("error-input");
     });
     isValid = false;
+  } else if (
+    (yearNumber === presentYear && monthNumber > presentMonth) ||
+    (yearNumber === presentYear &&
+      monthNumber > presentMonth &&
+      dayNumber > presentDay) ||
+    (yearNumber === presentYear &&
+      monthNumber === presentMonth &&
+      dayNumber > presentDay)
+  ) {
+    daySpan.textContent = "Invalid Date";
+    monthSpan.textContent = "Invalid Date";
+    yearSpan.textContent = "Invalid Date";
+    day.classList.add("error-text");
+    month.classList.add("error-text");
+    year.classList.add("error-text");
+    daySpan.classList.add("error-text");
+    monthSpan.classList.add("error-text");
+    yearSpan.classList.add("error-text");
+    allInput.forEach((input) => {
+      input.classList.add("error-input");
+    });
+    isValid = false;
   } else {
-    day.classList.remove("error-text");
     daySpan.textContent = " ";
     monthSpan.textContent = " ";
+    yearSpan.textContent = " ";
+    day.classList.remove("error-text");
     month.classList.remove("error-text");
+    year.classList.remove("error-text");
     allInput.forEach((input) => {
       input.classList.remove("error-input");
     });
@@ -130,7 +181,9 @@ const monthCheck = function () {
 
 // check year valid
 const yearCheck = function () {
+  const dayNumber = Number(dayInput.value);
   const yearNumber = Number(yearInput.value);
+  const monthNumber = Number(monthInput.value);
   if (yearNumber > presentYear) {
     yearSpan.classList.add("error-span");
     yearSpan.textContent = "Must be in the past";
@@ -147,21 +200,7 @@ const yearCheck = function () {
       input.classList.add("error-input");
     });
     isValid = false;
-  } else {
-    year.classList.remove("error-text");
-    yearSpan.textContent = " ";
-    allInput.forEach((input) => {
-      input.classList.remove("error-input");
-    });
-    isValid = true;
-  }
-};
-// Check valid date
-const dateValid = function () {
-  const dayNumber = Number(dayInput.value);
-  const yearNumber = Number(yearInput.value);
-  const monthNumber = Number(monthInput.value);
-  if (
+  } else if (
     (yearNumber === presentYear && monthNumber > presentMonth) ||
     (yearNumber === presentYear &&
       monthNumber > presentMonth &&
@@ -226,7 +265,4 @@ const calcAge = function () {
 dayInput.addEventListener("input", dayCheck);
 monthInput.addEventListener("input", monthCheck);
 yearInput.addEventListener("input", yearCheck);
-dayInput.addEventListener("input", dateValid);
-monthInput.addEventListener("input", dateValid);
-yearInput.addEventListener("input", dateValid);
 check.addEventListener("click", calcAge);
