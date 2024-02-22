@@ -37,6 +37,28 @@ const dayCheck = function () {
       input.classList.add("error-input");
     });
     isValid = false;
+  } else if (Number(monthInput.value) === 2 && dayNumber > 28) {
+    daySpan.classList.add("error-span");
+    daySpan.textContent = "Must be a valid date";
+    day.classList.add("error-text");
+    allInput.forEach((input) => {
+      input.classList.add("error-input");
+    });
+    isValid = false;
+  } else if (
+    (Number(monthInput.value) === 4 ||
+      Number(monthInput.value) === 6 ||
+      Number(monthInput.value) === 9 ||
+      Number(monthInput.value) === 11) &&
+    dayNumber > 30
+  ) {
+    daySpan.classList.add("error-span");
+    daySpan.textContent = "Must be a valid date";
+    day.classList.add("error-text");
+    allInput.forEach((input) => {
+      input.classList.add("error-input");
+    });
+    isValid = false;
   } else {
     daySpan.textContent = " ";
     day.classList.remove("error-text");
@@ -69,6 +91,7 @@ const monthCheck = function () {
     });
     isValid = false;
   } else if (monthNumber === 2 && Number(dayInput.value) > 28) {
+    monthSpan.textContent = " ";
     daySpan.classList.add("error-span");
     daySpan.textContent = "Must be a valid date";
     day.classList.add("error-text");
@@ -77,11 +100,13 @@ const monthCheck = function () {
     });
     isValid = false;
   } else if (
-    monthNumber === 4 ||
-    monthNumber === 6 ||
-    monthNumber === 9 ||
-    (monthNumber === 11 && Number(dayInput.value) > 30)
+    (monthNumber === 4 ||
+      monthNumber === 6 ||
+      monthNumber === 9 ||
+      monthNumber === 11) &&
+    Number(dayInput.value) > 30
   ) {
+    monthSpan.textContent = " ";
     daySpan.classList.add("error-span");
     daySpan.textContent = "Must be a valid date";
     day.classList.add("error-text");
