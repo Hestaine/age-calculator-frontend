@@ -246,7 +246,7 @@ const calcAge = function () {
     console.log(ageDiff);
     const ageDate = new Date(ageDiff);
     console.log(ageDate);
-    const ageDay = ageDate.getDate() - 1;
+    const ageDay = ageDate.getDate();
     console.log(ageDay);
     const ageMonth = ageDate.getMonth();
     console.log(ageMonth);
