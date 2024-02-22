@@ -15,6 +15,8 @@ const dayOutput = document.querySelector(".day-value");
 const monthOutput = document.querySelector(".month-value");
 const yearOutput = document.querySelector(".year-value");
 const presentYear = new Date().getFullYear();
+const presentMonth = new Date().getMonth() + 1;
+const presentDay = new Date().getDate();
 let isValid = false;
 
 // Functions
@@ -154,7 +156,46 @@ const yearCheck = function () {
     isValid = true;
   }
 };
-
+// Check valid date
+const dateValid = function () {
+  const dayNumber = Number(dayInput.value);
+  const yearNumber = Number(yearInput.value);
+  const monthNumber = Number(monthInput.value);
+  if (
+    (yearNumber === presentYear && monthNumber > presentMonth) ||
+    (yearNumber === presentYear &&
+      monthNumber > presentMonth &&
+      dayNumber > presentDay) ||
+    (yearNumber === presentYear &&
+      monthNumber === presentMonth &&
+      dayNumber > presentDay)
+  ) {
+    daySpan.textContent = "Invalid Date";
+    monthSpan.textContent = "Invalid Date";
+    yearSpan.textContent = "Invalid Date";
+    day.classList.add("error-text");
+    month.classList.add("error-text");
+    year.classList.add("error-text");
+    daySpan.classList.add("error-text");
+    monthSpan.classList.add("error-text");
+    yearSpan.classList.add("error-text");
+    allInput.forEach((input) => {
+      input.classList.add("error-input");
+    });
+    isValid = false;
+  } else {
+    daySpan.textContent = " ";
+    monthSpan.textContent = " ";
+    yearSpan.textContent = " ";
+    day.classList.remove("error-text");
+    month.classList.remove("error-text");
+    year.classList.remove("error-text");
+    allInput.forEach((input) => {
+      input.classList.remove("error-input");
+    });
+    isValid = true;
+  }
+};
 // check age
 const calcAge = function () {
   if (isValid) {
@@ -185,4 +226,7 @@ const calcAge = function () {
 dayInput.addEventListener("input", dayCheck);
 monthInput.addEventListener("input", monthCheck);
 yearInput.addEventListener("input", yearCheck);
+dayInput.addEventListener("input", dateValid);
+monthInput.addEventListener("input", dateValid);
+yearInput.addEventListener("input", dateValid);
 check.addEventListener("click", calcAge);
